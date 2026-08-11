@@ -112,7 +112,7 @@ agent_executer = AgentExecutor(
     verbose=True
 )
 
-
+# Topic to research on
 topic = input("Enter the Research topic : ")
 
 raw_resp = agent_executer.invoke({
@@ -121,7 +121,6 @@ raw_resp = agent_executer.invoke({
 
 
 # Get the COMPLETE final response
-
 final_response = raw_resp.get("output", "")
 
 
