@@ -3,6 +3,22 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Database, Link as LinkIcon, FileText, Lightbulb, Settings, Clock, Check, Plus } from 'lucide-react';
 import glanceFeather from '../assets/glance-feather.png';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 25 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
 export default function ResearchResult({ result, onNewResearch }) {
   if (!result) return null;
 
@@ -24,12 +40,12 @@ export default function ResearchResult({ result, onNewResearch }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
       className="w-full"
     >
-      <div className="flex items-center gap-4 mb-6">
+      <motion.div variants={itemVariants} className="flex items-center gap-4 mb-6">
         <div className="flex items-center gap-2">
           <FileText className="w-5 h-5 text-brand-accent" />
           <h2 className="text-xl font-bold text-brand-text">Research Results</h2>
@@ -38,7 +54,7 @@ export default function ResearchResult({ result, onNewResearch }) {
           <Check className="w-3.5 h-3.5" />
           <span>Research Completed</span>
         </div>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         
@@ -46,7 +62,7 @@ export default function ResearchResult({ result, onNewResearch }) {
         <div className="lg:col-span-8 flex flex-col bg-brand-surface border border-brand-border/60 rounded-3xl overflow-hidden shadow-sm">
           
           {/* Topic */}
-          <div className="flex gap-6 p-8 border-b border-brand-border/40">
+          <motion.div variants={itemVariants} className="flex gap-6 p-8 border-b border-brand-border/40">
             <div className="w-12 h-12 rounded-full bg-brand-primary/5 flex items-center justify-center flex-shrink-0">
               <Clock className="w-5 h-5 text-brand-primary" />
             </div>
@@ -54,10 +70,10 @@ export default function ResearchResult({ result, onNewResearch }) {
               <h3 className="text-sm font-bold uppercase tracking-widest text-brand-muted mb-2">Topic</h3>
               <p className="text-xl font-medium text-brand-text leading-snug">{result.topic}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Summary */}
-          <div className="flex gap-6 p-8 border-b border-brand-border/40 bg-brand-primary/5">
+          <motion.div variants={itemVariants} className="flex gap-6 p-8 border-b border-brand-border/40 bg-brand-primary/5">
             <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
               <FileText className="w-5 h-5 text-brand-primary" />
             </div>
@@ -71,11 +87,11 @@ export default function ResearchResult({ result, onNewResearch }) {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Sources */}
           {result.sources && result.sources.length > 0 && (
-            <div className="flex gap-6 p-8 border-b border-brand-border/40">
+            <motion.div variants={itemVariants} className="flex gap-6 p-8 border-b border-brand-border/40">
               <div className="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center flex-shrink-0">
                 <LinkIcon className="w-5 h-5 text-brand-accent" />
               </div>
@@ -107,12 +123,12 @@ export default function ResearchResult({ result, onNewResearch }) {
                   })}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* Analysis */}
           {result.analysis && (
-            <div className="flex gap-6 p-8 border-b border-brand-border/40">
+            <motion.div variants={itemVariants} className="flex gap-6 p-8 border-b border-brand-border/40">
               <div className="w-12 h-12 rounded-full bg-brand-primary/5 flex items-center justify-center flex-shrink-0">
                 <Lightbulb className="w-5 h-5 text-brand-primary" />
               </div>
@@ -126,12 +142,12 @@ export default function ResearchResult({ result, onNewResearch }) {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* Tools Used */}
           {result.tools_used && result.tools_used.length > 0 && (
-            <div className="flex gap-6 p-8">
+            <motion.div variants={itemVariants} className="flex gap-6 p-8">
               <div className="w-12 h-12 rounded-full bg-brand-accent/5 flex items-center justify-center flex-shrink-0">
                 <Settings className="w-5 h-5 text-brand-accent" />
               </div>
@@ -148,14 +164,14 @@ export default function ResearchResult({ result, onNewResearch }) {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           )}
 
         </div>
 
         {/* Aside Content (Right Column) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-brand-surface border border-brand-border/60 rounded-3xl p-8 shadow-sm flex flex-col items-center text-center">
+          <motion.div variants={itemVariants} className="bg-brand-surface border border-brand-border/60 rounded-3xl p-8 shadow-sm flex flex-col items-center text-center">
             
             <div className="mb-6 relative w-48 h-48 flex items-center justify-center">
               <div className="absolute inset-0 bg-brand-primary/5 rounded-full blur-2xl"></div>
@@ -199,15 +215,15 @@ export default function ResearchResult({ result, onNewResearch }) {
               <Plus className="w-4 h-4" />
               <span>New Research</span>
             </button>
-          </div>
+          </motion.div>
           
-          <div className="bg-brand-accent/5 border border-brand-accent/10 rounded-2xl p-5 flex items-start gap-3">
+          <motion.div variants={itemVariants} className="bg-brand-accent/5 border border-brand-accent/10 rounded-2xl p-5 flex items-start gap-3">
             <Lightbulb className="w-5 h-5 text-brand-accent flex-shrink-0 mt-0.5" />
             <p className="text-xs text-brand-text font-medium leading-relaxed">
               <span className="font-bold text-brand-accent block mb-1">Tip:</span>
               Click on any source link to explore more details. Save this research for future reference.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.div>
