@@ -1,0 +1,43 @@
+
+======================================================================
+
+--- Research Output ---
+Timestamp: 2026-08-12 15:49:56
+
+## Topic
+Indian Space Research Organisation (ISRO)
+
+## Summary
+The Indian Space Research Organisation (ISRO) is an autonomous organization of the Government of India responsible for space-related activities. It was established in 1969 and has been instrumental in launching satellites, conducting lunar missions, and developing indigenous launch vehicles.
+
+## Sources
+[Indian Space Research Organisation Official Website](https://www.isro.gov.in/)
+[ISRO History and Achievements](https://www.thehindu.com/sci-tech/india/isro-history-and-achievements/article29456713.ece)
+
+## Analysis
+ISRO has played a significant role in India's space program, including the successful launch of Chandrayaan-2 to the Moon and the Gaganyaan mission for human spaceflight. The organization continues to be at the forefront of Indian technological advancements.
+
+## Tools Used
+[DuckDuckGo Search]
+
+
+======================================================================
+
+--- Research Output ---
+Timestamp: 2026-08-12 16:39:15
+
+## Topic
+Tell me about quantum physics
+
+## Summary
+Quantum physics is a branch of physics that deals with phenomena on a very small scale, such as molecules, atoms, electrons, protons, and photons. It focuses on the behavior of matter and energy at these scales, where classical physics theories do not apply. Quantum mechanics describes how particles behave in terms of probability distributions rather than exact positions. The field also includes quantum computing, which uses quantum bits (qubits) to perform operations that are impossible with traditional binary bits.
+
+## Sources
+[Quantum Physics Overview](https://www.duckduckgo.com/?q=quantum+physics)
+
+## Analysis
+The provided information gives a basic overview of what quantum physics is and how it differs from classical physics. It mentions the concept of quanta, which are discrete units of energy or other physical properties. The summary also touches on the probabilistic nature of particle behavior in quantum mechanics and introduces quantum computing as an application within this field.
+
+## Tools Used
+[search](https://www.duckduckgo.com/?q=quantum+physics)
+

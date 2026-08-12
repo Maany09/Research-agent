@@ -112,41 +112,40 @@ agent_executer = AgentExecutor(
     verbose=True
 )
 
-# Topic to research on
-topic = input("Enter the Research topic : ")
+if __name__ == "__main__":
+    # Topic to research on
+    topic = input("Enter the Research topic : ")
 
-raw_resp = agent_executer.invoke({
-    "topic": topic
-})
+    raw_resp = agent_executer.invoke({
+        "topic": topic
+    })
 
+    # Get the COMPLETE final response
+    final_response = raw_resp.get("output", "")
 
-# Get the COMPLETE final response
-final_response = raw_resp.get("output", "")
+    if not final_response.strip():
 
+        print("Error: Agent returned an empty response.")
 
-if not final_response.strip():
+    else:
 
-    print("Error: Agent returned an empty response.")
+        print("\n" + "=" * 50)
+        print("RESEARCH RESULT")
+        print("=" * 50)
+        print(final_response)
+        print("=" * 50)
 
-else:
+    # Added saving condition
+    save_choice = input(
+        "Do you want to save the generated research? (Yes/No): "
+    ).strip().lower()
 
-    print("\n" + "=" * 50)
-    print("RESEARCH RESULT")
-    print("=" * 50)
-    print(final_response)
-    print("=" * 50)
+    if save_choice in ("yes", "y"):
+        save_to_txt(final_response)
+        print("Final response saved to research_output.txt.")
 
-# Added saving condition
-save_choice = input(
-    "Do you want to save the generated research? (Yes/No): "
-).strip().lower()
+    elif save_choice in ("no", "n"):
+        print("Research was not saved.")
 
-if save_choice in ("yes", "y"):
-    save_to_txt(final_response)
-    print("Final response saved to research_output.txt.")
-
-elif save_choice in ("no", "n"):
-    print("Research was not saved.")
-
-else:
-    print("Invalid choice. Research was not saved.")
+    else:
+        print("Invalid choice. Research was not saved.")
